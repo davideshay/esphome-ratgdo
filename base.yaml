@@ -35,24 +35,24 @@ ratgdo:
             title: "${friendly_name} sync failed"
             message: "Failed to communicate with garage opener on startup."
             notification_id: "esphome_ratgdo_${id_prefix}_sync_failed"
-api:
-  services:
-  - service: wipe_devices_from_gdo_memory
-    variables:
-      devices_to_wipe: string
-    then:
-      - lambda: !lambda |-
-          if(devices_to_wipe.compare("all") == 0) {
-            id($id_prefix).clear_paired_devices(ratgdo::PairedDevice::ALL);
-          } else if (devices_to_wipe.compare("remote") == 0) {
-            id($id_prefix).clear_paired_devices(ratgdo::PairedDevice::REMOTE);
-          } else if (devices_to_wipe.compare("keypad") == 0) {
-            id($id_prefix).clear_paired_devices(ratgdo::PairedDevice::KEYPAD);
-          } else if (devices_to_wipe.compare("wall") == 0)  {
-            id($id_prefix).clear_paired_devices(ratgdo::PairedDevice::WALL_CONTROL);
-          } else if (devices_to_wipe.compare("accessory")  == 0) {
-            id($id_prefix).clear_paired_devices(ratgdo::PairedDevice::ACCESSORY);
-          }
+# api:
+#   services:
+#   - service: wipe_devices_from_gdo_memory
+#     variables:
+#       devices_to_wipe: string
+#     then:
+#       - lambda: !lambda |-
+#           if(devices_to_wipe.compare("all") == 0) {
+#             id($id_prefix).clear_paired_devices(ratgdo::PairedDevice::ALL);
+#           } else if (devices_to_wipe.compare("remote") == 0) {
+#             id($id_prefix).clear_paired_devices(ratgdo::PairedDevice::REMOTE);
+#           } else if (devices_to_wipe.compare("keypad") == 0) {
+#             id($id_prefix).clear_paired_devices(ratgdo::PairedDevice::KEYPAD);
+#           } else if (devices_to_wipe.compare("wall") == 0)  {
+#             id($id_prefix).clear_paired_devices(ratgdo::PairedDevice::WALL_CONTROL);
+#           } else if (devices_to_wipe.compare("accessory")  == 0) {
+#             id($id_prefix).clear_paired_devices(ratgdo::PairedDevice::ACCESSORY);
+#           }
 
 ota:
   - platform: esphome
