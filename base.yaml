@@ -27,14 +27,14 @@ ratgdo:
   input_gdo_pin: ${uart_rx_pin}
   output_gdo_pin: ${uart_tx_pin}
   input_obst_pin: ${input_obst_pin}
-  on_sync_failed:
-    then:
-      - homeassistant.service:
-          service: persistent_notification.create
-          data:
-            title: "${friendly_name} sync failed"
-            message: "Failed to communicate with garage opener on startup."
-            notification_id: "esphome_ratgdo_${id_prefix}_sync_failed"
+  # on_sync_failed:
+  #   then:
+  #     - homeassistant.service:
+  #         service: persistent_notification.create
+  #         data:
+  #           title: "${friendly_name} sync failed"
+  #           message: "Failed to communicate with garage opener on startup."
+  #           notification_id: "esphome_ratgdo_${id_prefix}_sync_failed"
 # api:
 #   services:
 #   - service: wipe_devices_from_gdo_memory
